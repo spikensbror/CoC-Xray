@@ -32,6 +32,7 @@ void CSE_ALifeInventoryItem::script_register(lua_State *L)
 			.def("has_upgrade", &has_upgrade)
 			.def("add_upgrade", &add_upgrade)
 			.def_readwrite("condition", &CSE_ALifeInventoryItem::m_fCondition)
+			.def_readwrite("refined", &CSE_ALifeInventoryItem::m_bRefined) // SpikensbroR: Artefact refine
 	];
 }
 

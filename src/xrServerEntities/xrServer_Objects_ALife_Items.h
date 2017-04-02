@@ -39,6 +39,7 @@ public:
 
 public:
 	float							m_fCondition;
+	u32 m_bRefined; // SpikensbroR: Artefact refine
 	float							m_fMass;
 	u32								m_dwCost;
 	s32								m_iHealthValue;
