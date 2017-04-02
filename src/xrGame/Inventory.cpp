@@ -1179,6 +1179,11 @@ bool CInventory::CanPutInBelt(PIItem pIItem)
 	if(!pIItem || !pIItem->Belt())		return false;
 	if(m_belt.size() >= BeltWidth())	return false;
 
+	// SpikensbroR: Artefact refine
+	if (!pIItem->GetRefined())
+		return false;
+	// -SpikensbroR
+
 	return FreeRoom_inBelt(m_belt, pIItem, BeltWidth(), 1);
 }
 //проверяет можем ли поместить вещь в рюкзак,

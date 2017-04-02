@@ -782,6 +782,11 @@ bool CUIActorMenu::ToBelt(CUICellItem* itm, bool b_use_cursor_pos)
 		CUICellItem* slot_cell				= belt_list->GetCellAt(belt_cell_pos).m_item;
 //		VERIFY								(slot_cell && ((PIItem)slot_cell->m_pData)==_iitem);
 
+		// SpikensbroR: Artefact refine, sanity check
+		if (slot_cell == NULL)
+			return false;
+		// -SpikensbroR
+
 		bool result							= ToBag(slot_cell, false);
 		VERIFY								(result);
 
