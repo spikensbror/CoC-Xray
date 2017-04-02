@@ -168,6 +168,11 @@ public:
 	IC		void				SetCondition		(float val)					{m_fCondition = val;}
 			void				ChangeCondition		(float fDeltaCondition);
 
+			// SpikensbroR: Artefact refine
+			IC bool GetRefined() const { return m_bRefined; };
+			IC void SetRefined(bool value) { m_bRefined = value; };
+			// -SpikensbroR
+
 			u16					BaseSlot			()  const					{return m_ItemCurrPlace.base_slot_id;}
 			u16					CurrSlot			()  const					{return m_ItemCurrPlace.slot_id;}
 			u16					CurrPlace			()  const					{return m_ItemCurrPlace.type;}
@@ -189,6 +194,7 @@ protected:
 	u32							m_cost;
 	float						m_weight;
 	float						m_fCondition;
+	u32							m_bRefined; // SpikensbroR: Artefact refine
 	shared_str					m_Description;
 protected:
 	ALife::_TIME_ID				m_dwItemIndependencyTime;
