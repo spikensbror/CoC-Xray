@@ -55,6 +55,7 @@ CInventoryItem::CInventoryItem()
 	m_flags.set			(FCanTrade, m_can_trade);
 	m_flags.set			(FUsingCondition,FALSE);
 	m_fCondition		= 1.0f;
+	m_bRefined = FALSE; // SpikensbroR: Artefact refine
 
 	m_name = m_nameShort = NULL;
 
@@ -376,6 +377,7 @@ void CInventoryItem::save(NET_Packet &packet)
 	packet.w_u16			(m_ItemCurrPlace.value);
 	packet.w_float			(m_fCondition);
 //--	save_data				(m_upgrades, packet);
+	packet.w_u32(m_bRefined); // SpikensbroR: Artefact refine
 
 	if (object().H_Parent()) {
 		packet.w_u8			(0);
@@ -761,6 +763,8 @@ void CInventoryItem::load(IReader &packet)
 
 //--	load_data( m_upgrades, packet );
 //--	install_loaded_upgrades();
+
+	m_bRefined = packet.r_u32(); // SpikensbroR: Artefact refine
 
 	u8						tmp = packet.r_u8();
 	if (!tmp)

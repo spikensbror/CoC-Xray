@@ -22,6 +22,7 @@ protected:
 	UIArtefactParamItem*	m_restore_item[ALife::eRestoreTypeMax];
 	UIArtefactParamItem*	m_additional_weight;
 	UIArtefactParamItem*	m_disp_condition; //Alundaio: Show AF Condition
+	UIArtefactParamItem* m_refined; // SpikensbroR: Artefact refine
 
 	CUIStatic*				m_Prop_line;
 
@@ -38,6 +39,7 @@ public:
 		void	Init				( CUIXml& xml, LPCSTR section );
 		void	SetCaption			( LPCSTR name );
 		void	SetValue			( float value );
+		void SetText(LPCSTR text);
 	
 private:
 	CUIStatic*	m_caption;

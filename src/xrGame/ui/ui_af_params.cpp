@@ -24,6 +24,10 @@ CUIArtefactParams::CUIArtefactParams()
 		m_restore_item[i] = NULL;
 	}
 	m_additional_weight = NULL;
+	m_disp_condition = NULL;
+	m_Prop_line = NULL;
+	m_disp_condition = NULL; // Alundaio: Artefact efficiency
+	m_refined = NULL; // SpikensbroR: Artefact refine
 }
 
 CUIArtefactParams::~CUIArtefactParams()
@@ -32,6 +36,8 @@ CUIArtefactParams::~CUIArtefactParams()
 	delete_data	( m_restore_item );
 	xr_delete	( m_additional_weight );
 	xr_delete	( m_Prop_line );
+	xr_delete(m_disp_condition); // Alundaio: Artefact efficiency
+	xr_delete(m_refined); // SpikensbroR: Artefact refine
 }
 
 LPCSTR af_immunity_section_names[] = // ALife::EInfluenceType
@@ -119,6 +125,15 @@ void CUIArtefactParams::InitFromXml( CUIXml& xml )
 	m_disp_condition->SetCaption(name);
 	xml.SetLocalRoot(base_node);
 	//-Alundaio
+
+	// SpikensbroR: Artefact refine
+	m_refined = xr_new<UIArtefactParamItem>();
+	m_refined->Init(xml, "refined");
+	m_refined->SetAutoDelete(false);
+	name = CStringTable().translate("ui_inv_af_refined").c_str();
+	m_refined->SetCaption(name);
+	xml.SetLocalRoot(base_node);
+	// -SpikensbroR
 	
 	for ( u32 i = 0; i < 9; ++i )
 	{
@@ -188,6 +203,17 @@ void CUIArtefactParams::SetInfo( CInventoryItem& pInvItem )
 	h += m_disp_condition->GetWndSize().y;
 	AttachChild(m_disp_condition);
 	//-Alundaio
+
+	// SpikensbroR: Artefact refine
+	m_refined->SetText(pInvItem.GetRefined()
+		? CStringTable().translate("ui_inv_af_refined_true").c_str()
+		: CStringTable().translate("ui_inv_af_refined_false").c_str());
+	pos.set(m_refined->GetWndPos());
+	pos.y = h;
+	m_refined->SetWndPos(pos);
+	h += m_refined->GetWndSize().y;
+	AttachChild(m_refined);
+	// -SpikensbroR
 	
 	for (u32 i = 0; i < 9; ++i)
 	{
@@ -330,3 +356,11 @@ void UIArtefactParamItem::SetValue( float value )
 	}
 
 }
+
+// SpikensbroR: Artefact refine
+void UIArtefactParamItem::SetText(LPCSTR value)
+{
+	SetValue(0.f);
+	m_value->SetText(value);
+}
+// -SpikensbroR
