@@ -51,6 +51,11 @@ public:
 				void	SetPowerPower						(float value)					{m_fPowerRestoreSpeed = value;}
 				void	SetBleedingPower						(float value)					{m_fBleedingRestoreSpeed = value;}                                  
 
+				// SpikensbroR: Artefact refine
+				virtual	u32 Cost() const;
+				virtual	float Weight() const;
+				// -SpikensbroR
+
 protected:
 	virtual void					UpdateCLChild					()		{};
 	virtual void					CreateArtefactActivation			();
