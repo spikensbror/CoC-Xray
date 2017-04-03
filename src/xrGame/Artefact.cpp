@@ -626,7 +626,7 @@ void CArtefact::OnHiddenItem ()
 
 u32 CArtefact::Cost() const
 {
-	if (m_bRefined)
+	if (m_bRefined && g_game_artefact_refine)
 		return m_cost * 2;
 
 	return m_cost;
@@ -634,7 +634,7 @@ u32 CArtefact::Cost() const
 
 float CArtefact::Weight() const
 {
-	if (!m_bRefined)
+	if (!m_bRefined && g_game_artefact_refine)
 		return m_weight * 10;
 
 	return m_weight;

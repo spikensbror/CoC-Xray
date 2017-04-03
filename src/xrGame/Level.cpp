@@ -67,6 +67,7 @@ ENGINE_API BOOL	g_bootComplete;
 //-AVO
 extern CUISequencer* g_tutorial;
 extern CUISequencer* g_tutorial2;
+extern ENGINE_API int g_game_artefact_refine; // SpikensbroR: Artefact refine
 
 float g_cl_lvInterp = 0.1;
 u32 lvInterpSteps = 0;

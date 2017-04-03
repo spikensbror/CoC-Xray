@@ -44,6 +44,8 @@ struct SHit;
 class CSE_ALifeInventoryItem;
 typedef CSE_ALifeInventoryItem::mask_num_items	mask_inv_num_items;
 
+extern ENGINE_API int g_game_artefact_refine;
+
 struct net_update_IItem
 {
 	u32					dwTimeStamp;

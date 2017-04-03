@@ -1180,7 +1180,7 @@ bool CInventory::CanPutInBelt(PIItem pIItem)
 	if(m_belt.size() >= BeltWidth())	return false;
 
 	// SpikensbroR: Artefact refine
-	if (!pIItem->GetRefined())
+	if (!pIItem->GetRefined() && g_game_artefact_refine)
 		return false;
 	// -SpikensbroR
 

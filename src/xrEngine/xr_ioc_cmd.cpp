@@ -709,6 +709,9 @@ extern Flags32 psEnvFlags;
 extern int g_ErrorLineCount;
 
 ENGINE_API int ps_r__Supersample = 1;
+
+ENGINE_API int g_game_artefact_refine = 0; // SpikensbroR: Artefact refine
+
 void CCC_Register()
 {
     // General
@@ -758,6 +761,7 @@ void CCC_Register()
     // Render device states
     CMD4(CCC_Integer, "r__supersample", &ps_r__Supersample, 1, 4);
 
+	CMD4(CCC_Integer, "game_artefact_refine", &g_game_artefact_refine, 0, 1); // SpikensbroR: Artefact refine
 
     CMD3(CCC_Mask, "rs_v_sync", &psDeviceFlags, rsVSync);
     // CMD3(CCC_Mask, "rs_disable_objects_as_crows",&psDeviceFlags, rsDisableObjectsAsCrows );
